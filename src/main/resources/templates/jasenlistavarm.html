@@ -25,7 +25,6 @@
 		    <th>Email</th>
 		    <th>Yhdistys</th>
 		    <th>Jäsenyys</th>
-		    <th>Tapahtumat</th>
 		     <th></th>
 		     <th></th>
 		   <th sec:authorize="hasAuthority('ADMIN')"></th>
@@ -41,8 +40,7 @@
     		<td th:text="${jasen.puhelin}"></td> 
     		<td th:text="${jasen.email}"></td>		
     		<td th:text="${jasen.yhdistys.name}"></td> 	
-    		<td th:text="${jasen.jasenyys.name}"></td> 
-    		<td th:text="${jasen.tapahtumat}"></td> 		
+    		<td th:text="${jasen.jasenyys.name}"></td> 		
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${jasen.id})}"><button type="button"  class="btn btn-success">Muokkaa</button></a><td>   
  			
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${jasen.id})}"><button type="button"  class="btn btn-danger">Poista</button></a></td>	  		

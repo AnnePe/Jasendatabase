@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kevat22.Jasendatabase.domain.Jasen;
 import kevat22.Jasendatabase.domain.JasenRepository;
 import kevat22.Jasendatabase.domain.JasenyysRepository;
+import kevat22.Jasendatabase.domain.TapahtumaRepository;
 import kevat22.Jasendatabase.domain.YhdistysRepository;
 
 
@@ -28,6 +29,8 @@ public class JasenController {
 	private YhdistysRepository yrepository;
 	@Autowired
 	private JasenyysRepository arepository;
+	@Autowired
+	private TapahtumaRepository trepository;
 	
 	@RequestMapping(value = "/login")
 	public String login(){
@@ -47,6 +50,7 @@ public class JasenController {
 	    	model.addAttribute("jasen", new Jasen());
 	    	model.addAttribute("yhdistykset", yrepository.findAll());
 	    	model.addAttribute("jasenyydet", arepository.findAll());
+	    	model.addAttribute("tapahtumat", trepository.findAll());
 	    	return "lisaajasen";
 	    }
 	 
@@ -56,6 +60,7 @@ public class JasenController {
 			System.out.println("virhe");
 			model.addAttribute("yhdistykset", yrepository.findAll());//yhdistyslista pitää viedä modelissa uudelleen muuten tyhjentää kentän
 			model.addAttribute("jasenyydet", arepository.findAll());
+			model.addAttribute("tapahtumat", trepository.findAll());
 			return ("/lisaajasen");
 		}
 	        jrepository.save(jasen);
@@ -70,6 +75,7 @@ public class JasenController {
 	    	model.addAttribute("jasen", jrepository.findById(jasenId));
 	    	model.addAttribute("yhdistykset", yrepository.findAll());
 	    	model.addAttribute("jasenyydet", arepository.findAll());
+	    	model.addAttribute("tapahtumat", trepository.findAll());
 	    	return "muokkaajasen";
 	    }   
 	    
@@ -80,6 +86,7 @@ public class JasenController {
 			System.out.println("Erroria");
 			model.addAttribute("yhdistykset", yrepository.findAll());
 			model.addAttribute("jasenyydet", arepository.findAll());
+			model.addAttribute("tapahtumat", trepository.findAll());
 			return ("/muokkaajasen");
 		}
 	        jrepository.save(jasen);

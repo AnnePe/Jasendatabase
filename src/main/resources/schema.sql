@@ -47,4 +47,24 @@ VALUES ("user", "$2a$10$1DTvwpXVBArGFixHBuzVJObjTuXhIOkx5pse6KsYs8/C2ckxnGEou", 
 ("admin", "$2a$10$cDZgyF4xaPMmmoRW3OVcmuf.8o2YSx8.M7CeRKqi.1PVw.t3E8uEC", "ADMIN"),
 ("anne", "$2a$10$Soj3a6huZwwmFRX.RgU9TuDEZE5Oz3eTG2yuVlU88KiqhzPrLWO5.", "ADMIN");
 
+//CREATE TABLE tapahtuma
+(id BIGINT NOT NULL AUTO_INCREMENT 
+,name VARCHAR(50) NOT NULL
+,PRIMARY KEY (id)
+);
+
+//INSERT INTO tapahtuma (name) VALUES ('Kevät'), ('Kesä'), ('Syksy'), ('Talvi');
+
+//create table jasen_tapahtuma(
+    jasen_id BIGINT NOT NULL,
+    tapahtuma_id BIGINT NOT NULL,
+    primary key(jasen_id, tapahtuma_id),
+    CONSTRAINT fk_jasen_tapahtuma_jasen foreign key (jasen_id) references jasen (id),
+    CONSTRAINT fk_jasen_tapahtuma_tapahtuma foreign key (tapahtuma_id) references tapahtuma (id)
+);
+
+//INSERT INTO jasen_tapahtuma (jasen_id, tapahtuma_id) 
+VALUES (1,1), (2,1);
+//INSERT INTO jasen_tapahtuma (jasen_id, tapahtuma_id) 
+VALUES (1,2), (2,2);
 

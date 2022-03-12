@@ -52,15 +52,7 @@
 			 <select id="deplist" th:field="*{jasenyys}" class="form-control" >
        			<option th:each="jasenyys: ${jasenyydet}" th:value="${jasenyys.id}" th:text="${jasenyys.name}"></option>
     		</select>					
-		  	<div  class="form-group row"></div>		
-			<label class="col-form-label col-sm-4">Tapahtumat</label>
-			<div class="col-sm-8">
-				<th:block th:each="tapahtuma:${tapahtumat}">
-				<div>
-					<input type="checkbox" th:field="*{tapahtumat}" th:text="${tapahtuma.name}"
-						th:value="${tapahtuma.id}" />
-				 </div>
-			</div>
+		  	
 		  			  				
 			<input type="submit" value="Save"></input>
 		</form>

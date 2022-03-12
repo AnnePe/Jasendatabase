@@ -1,10 +1,15 @@
 package kevat22.Jasendatabase.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -44,6 +49,15 @@ public class Jasen {
 	@ManyToOne
 	@JoinColumn(name="jasenyysid")
 	private Jasenyys jasenyys;
+	
+	@ManyToMany
+	@JoinTable(
+			name="jasen_tapahtuma",
+			joinColumns = @JoinColumn(name="jasen_id"),
+			inverseJoinColumns = @JoinColumn(name="tapahtuma_id")
+			)
+	
+	private Set<Tapahtuma> tapahtumat =new HashSet<>();//pitää määritellä set elementti että voi määriettlä get
 	
 	public Jasen() {}
 	
@@ -118,11 +132,28 @@ public class Jasen {
 		this.jasenyys = jasenyys;
 	}
 	
+	public Set<Tapahtuma> getTapahtumat() {
+		return tapahtumat;
+	}
+
+	public void setTapahtumat(Set<Tapahtuma> tapahtumat) {
+		this.tapahtumat = tapahtumat;
+	}
+	
+	public void addTapahtuma(Tapahtuma tapahtuma) {
+		this.tapahtumat.add(tapahtuma);
+	}
+
 	@Override
+	public String toString() {
+		return "[ tapahtumat ]";
+	}
+	
+	/*@Override
 	public String toString() {
 		return "Jasen [ etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", osoite=" + osoite
 				+ ", postinumero=" + postinumero + ", puhelin=" + puhelin + ", email=" + email + "]";
-	}
+	}*/
 	
 	
 	
