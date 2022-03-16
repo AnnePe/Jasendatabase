@@ -57,7 +57,7 @@ public class Jasen {
 			inverseJoinColumns = @JoinColumn(name="tapahtuma_id")
 			)
 	
-	private Set<Tapahtuma> tapahtumat =new HashSet<>();//pitää määritellä set elementti että voi määriettlä get
+	private Set<Tapahtuma> tapahtumat =new HashSet<>();//pitää määritellä set elementti että voi määritellä get
 	
 	public Jasen() {}
 	

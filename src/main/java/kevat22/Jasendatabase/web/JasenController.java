@@ -76,7 +76,7 @@ public class JasenController {
 	    	model.addAttribute("yhdistykset", yrepository.findAll());
 	    	model.addAttribute("jasenyydet", arepository.findAll());
 	    	model.addAttribute("tapahtumat", trepository.findAll());
-	    	return "muokkaajasen";
+	    	return "/muokkaajasen";
 	    }   
 	    
 	    //Tallennus kun jäsen editoidaan ja validointi 
