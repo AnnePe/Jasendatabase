@@ -41,7 +41,7 @@ public class JasenController {
 	@RequestMapping(value = "/jasenlista")
 	public String jasenList(Model model) {
 		model.addAttribute("jasenet", jrepository.findAll());
-		return("jasenlista");
+		return("/jasenlista");
 	}
 	
 	@PreAuthorize("hasAuthority('ADMIN')")//tarkastetaan oikeus, vain ADMIN voi lisätä
@@ -51,7 +51,7 @@ public class JasenController {
 	    	model.addAttribute("yhdistykset", yrepository.findAll());
 	    	model.addAttribute("jasenyydet", arepository.findAll());
 	    	model.addAttribute("tapahtumat", trepository.findAll());
-	    	return "lisaajasen";
+	    	return "/lisaajasen";
 	    }
 	 
 	 @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -94,7 +94,7 @@ public class JasenController {
 	    } 
 	 @PreAuthorize("hasAuthority('ADMIN')")//tarkastetaan oikeus, vain ADMIN voi poistaa
 	 @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	 public String deleteBook(@PathVariable("id") Long jasenId, Model model) {
+	 public String deleteJasen(@PathVariable("id") Long jasenId, Model model) {
     	jrepository.deleteById(jasenId);
         return "redirect:../jasenlista";
 	 }   

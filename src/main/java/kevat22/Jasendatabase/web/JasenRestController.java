@@ -32,7 +32,7 @@ public class JasenRestController {
 	
 	
 	// REST haetaan kaikki jäsenet, toimii
-	@PreAuthorize("hasAuthority('ADMIN')")//tarkastetaan oikeus, vain ADMIN voi lisätä
+	
     @RequestMapping(value="/jasenet", method = RequestMethod.GET)
     public List<Jasen> JasenListRest() {	
         return (List<Jasen>) jrepository.findAll();
@@ -56,7 +56,7 @@ public class JasenRestController {
     //toimii
 	@PreAuthorize("hasAuthority('ADMIN')")//tarkastetaan oikeus, vain ADMIN voi lisätä
     @DeleteMapping("/jasenet/{id}")
-    void deleteBook(@PathVariable Long id) {
+    void deleteJasen(@PathVariable Long id) {
     	jrepository.deleteById(id);
     	
     }
